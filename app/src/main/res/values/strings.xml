@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">alexandria</string>
+    <string name="search">Search a book by title</string>
+    <string name="do_search">Search</string>
+    <string name="start_searching">Use the search bar to start searching books</string>
+    <string name="such_empty">Wow! Such empty...</string>
+</resources>
