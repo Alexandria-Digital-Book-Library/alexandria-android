@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import io.github.aloussase.alexandria.di.AppModule
 import io.github.aloussase.alexandria.ui.screens.HomeScreen
 import io.github.aloussase.alexandria.ui.theme.AlexandriaTheme
+import org.koin.android.ext.koin.androidContext
 import org.koin.compose.KoinApplication
 
 class MainActivity : ComponentActivity() {
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AlexandriaTheme {
                 KoinApplication(application = {
+                    androidContext(this@MainActivity)
                     modules(
                         AppModule.get
                     )

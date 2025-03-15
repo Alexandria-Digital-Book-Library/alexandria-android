@@ -1,4 +1,4 @@
-package io.github.aloussase.alexandria.ui
+package io.github.aloussase.alexandria.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

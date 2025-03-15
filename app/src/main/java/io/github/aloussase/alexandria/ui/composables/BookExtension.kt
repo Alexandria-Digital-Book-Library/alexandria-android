@@ -15,14 +15,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.github.aloussase.alexandria.R
+import io.github.aloussase.alexandria.domain.model.Book
+import io.github.aloussase.alexandria.ui.viewmodel.DownloadsEvent
+import io.github.aloussase.alexandria.ui.viewmodel.DownloadsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun BookExtension(
-    extension: String,
-    modifier: Modifier = Modifier
+    book: Book,
+    modifier: Modifier = Modifier,
+    viewModel: DownloadsViewModel = koinViewModel()
 ) {
     ElevatedButton(
-        onClick = {},
+        onClick = { viewModel.onEvent(DownloadsEvent.InitiateDownload(book.downloadUrl)) },
         modifier = modifier,
     ) {
         Row(
@@ -34,7 +39,7 @@ fun BookExtension(
                 contentDescription = stringResource(id = R.string.download_book)
             )
             Box(modifier = Modifier.width(2.dp))
-            Text(extension.uppercase())
+            Text(book.extension.uppercase())
         }
     }
 }

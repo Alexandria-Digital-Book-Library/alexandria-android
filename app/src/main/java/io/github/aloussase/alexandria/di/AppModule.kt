@@ -3,12 +3,16 @@ package io.github.aloussase.alexandria.di
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.github.aloussase.alexandria.domain.interfaces.AlexandriaAPI
-import io.github.aloussase.alexandria.ui.HomeViewModel
+import io.github.aloussase.alexandria.ui.viewmodel.DownloadsViewModel
+import io.github.aloussase.alexandria.ui.viewmodel.HomeViewModel
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.lang.ref.WeakReference
 import java.util.concurrent.TimeUnit
 
 object AppModule {
@@ -34,5 +38,9 @@ object AppModule {
         }
 
         viewModelOf(::HomeViewModel)
+
+        viewModel {
+            DownloadsViewModel(WeakReference(androidContext()))
+        }
     }
 }

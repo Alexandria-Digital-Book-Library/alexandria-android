@@ -63,7 +63,7 @@ fun BookCard(
                     modifier = Modifier
                         .fillMaxHeight(1f)
                 )
-                BookExtension(book.extension)
+                BookExtension(book)
             }
         }
     }

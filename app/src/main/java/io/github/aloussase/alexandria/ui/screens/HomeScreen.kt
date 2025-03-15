@@ -21,8 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.aloussase.alexandria.R
-import io.github.aloussase.alexandria.ui.HomeEvent
-import io.github.aloussase.alexandria.ui.HomeViewModel
+import io.github.aloussase.alexandria.ui.viewmodel.HomeEvent
+import io.github.aloussase.alexandria.ui.viewmodel.HomeViewModel
 import io.github.aloussase.alexandria.ui.composables.BookCard
 import org.koin.androidx.compose.koinViewModel
 
