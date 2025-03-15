@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface AlexandriaAPI {
     @GET("api/books")
-    fun searchBooks(@Query("title") title: String): List<Book>
+    suspend fun searchBooks(@Query("title") title: String): List<Book>
 }

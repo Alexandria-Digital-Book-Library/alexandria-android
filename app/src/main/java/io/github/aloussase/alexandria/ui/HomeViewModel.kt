@@ -2,11 +2,13 @@ package io.github.aloussase.alexandria.ui
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.github.aloussase.alexandria.domain.interfaces.AlexandriaAPI
 import io.github.aloussase.alexandria.domain.model.Book
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 data class HomeState(
     val query: String = "",
@@ -19,7 +21,7 @@ sealed class HomeEvent {
 }
 
 class HomeViewModel(
-    api: AlexandriaAPI
+    val api: AlexandriaAPI
 ) : ViewModel() {
 
     companion object {
@@ -48,5 +50,18 @@ class HomeViewModel(
     private fun onSearchBooks() {
         val query = _state.value.query
         Log.d(TAG, "Searching for books with query: $query")
+
+        if (query.isEmpty()) {
+            return
+        }
+
+        viewModelScope.launch {
+            val books = api.searchBooks(query)
+            _state.update {
+                it.copy(
+                    books = books
+                )
+            }
+        }
     }
 }
